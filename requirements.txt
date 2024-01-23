@@ -13,5 +13,5 @@ pytesseract
 pillow
 simpleaudio
 pynput
-keyboard
 colorama
+streamdeck
