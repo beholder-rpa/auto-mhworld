@@ -5,7 +5,7 @@ import os
 from time import sleep
 import argparse
 from pynput.keyboard import Controller as KeyboardController
-from pynput.mouse import Button, Controller as MouseController
+from pynput.mouse import Controller as MouseController
 from colorama import Style, Fore, init as colorama_init
 import time
 from StreamDeck.DeviceManager import DeviceManager
