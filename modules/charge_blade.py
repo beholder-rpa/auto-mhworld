@@ -5,7 +5,7 @@ from time import sleep
 class ChargeBlade:
     def __init__(self, mouse, keyboard, sounds):
         self.mouse = mouse
-        self.keayboard = keyboard
+        self.keyboard = keyboard
         self.sounds = sounds
 
     # Bank the Phials, aka Charge Phials
