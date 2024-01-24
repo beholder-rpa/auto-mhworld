@@ -179,21 +179,23 @@ def init_streamdeck():
     currentDeck.set_key_callback(key_change_callback)
     return currentDeck
 
-
-def main():
+def parse_args():
     parser = argparse.ArgumentParser()
     parser.add_argument("-d", "--debug", action="store_true")
     args = parser.parse_args()
 
-    global debug
-    debug = args.debug
-    print(f"Debug: {debug}")
+    return args
 
-    currentDeck = init_streamdeck()
-
+def main():
     print(f"{Fore.LIGHTMAGENTA_EX}Starting Auto MH:World ...{Style.RESET_ALL}")
 
-    if args.debug:
+    args = parse_args()
+    currentDeck = init_streamdeck()
+
+    global debug
+    debug = args.debug   
+
+    if debug:
         print(f"\t{Fore.LIGHTGREEN_EX}Debugging mode enabled{Style.RESET_ALL}")
 
     print(f"Press Ctrl+C to exit...")
