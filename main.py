@@ -1,10 +1,11 @@
 from win32gui import GetWindowText, GetForegroundWindow
 
+import time
 import argparse
 from pynput.keyboard import Controller as KeyboardController
 from pynput.mouse import Controller as MouseController
 from colorama import Style, Fore, init as colorama_init
-import time
+
 from modules.charge_blade import ChargeBlade
 from modules.charge_blade_actions_original import get_charge_blade_actions_original
 from modules.charge_blade_actions_xl import get_charge_blade_actions_xl
