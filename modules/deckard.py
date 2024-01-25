@@ -74,6 +74,7 @@ def update_key_image(deck, key, icon, label, font="Roboto-Regular.ttf"):
 def init_streamdeck(
     get_actions_original: lambda: list,
     get_actions_xl: lambda: list,
+    get_shortcut_actions_xl: lambda: list,
     debug: bool = False,
 ):
     streamdecks = DeviceManager().enumerate()
@@ -89,8 +90,10 @@ def init_streamdeck(
             currentDeck = deck
             if deckType == "Stream Deck XL":
                 actions = get_actions_xl()
+                shortcut_actions = get_shortcut_actions_xl()
             elif deckType == "Stream Deck Original":
                 actions = get_actions_original()
+                shortcut_actions = []
             else:
                 print(f"Unknown deck type: {deckType}")
                 exit()
@@ -118,6 +121,12 @@ def init_streamdeck(
             if action["index"] == key:
                 keyAction = action
                 break
+            
+        for action in shortcut_actions:
+            if action["index"] == key:
+                keyAction = action
+                break
+            
         if keyAction is not None:
             update_key_image(deck, key, keyAction["icon"], keyAction["label"])
 
@@ -137,6 +146,12 @@ def init_streamdeck(
             if action["index"] == key:
                 keyAction = action
                 break
+
+        if keyAction is None:
+            for action in shortcut_actions:
+                if action["index"] == key:
+                    keyAction = action
+                    break
 
         if keyAction is None:
             return

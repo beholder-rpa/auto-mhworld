@@ -6,6 +6,9 @@ from pynput.keyboard import Controller as KeyboardController
 from pynput.mouse import Controller as MouseController
 from colorama import Style, Fore, init as colorama_init
 
+from modules.shortcuts import Shortcuts
+from modules.shortcut_actions_xl import get_shortcut_actions_xl
+
 from modules.charge_blade import ChargeBlade
 from modules.charge_blade_actions_original import get_charge_blade_actions_original
 from modules.charge_blade_actions_xl import get_charge_blade_actions_xl
@@ -21,6 +24,12 @@ keyboard = KeyboardController()
 mouse = MouseController()
 currentDeck = None
 actions = []
+
+shortcuts = Shortcuts(
+    mouse,
+    keyboard,
+    sounds,
+)
 
 charge_blade = ChargeBlade(
     mouse,
@@ -44,6 +53,7 @@ def main():
     currentDeck = init_streamdeck(
         lambda: get_charge_blade_actions_original(charge_blade),
         lambda: get_charge_blade_actions_xl(charge_blade),
+        lambda: get_shortcut_actions_xl(shortcuts),
         args.debug,
     )
 
