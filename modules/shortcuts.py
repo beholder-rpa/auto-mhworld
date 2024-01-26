@@ -9,7 +9,7 @@ class Shortcuts:
 
         # define functions for each shortcut, f1-f4, 1-8
         for f_key in [Key.f1, Key.f2, Key.f3, Key.f4]:
-          for i in range(1, 8):
+          for i in range(1, 9):
               setattr(self, f"shortcut_{f_key.name.lower()}_{i}", lambda nk=str(i), solo=False, fk=f_key: self.generic_shortcut(fk, nk, solo))
         
 

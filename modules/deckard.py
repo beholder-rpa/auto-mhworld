@@ -9,11 +9,16 @@ ASSETS_PATH = os.path.join(os.path.dirname(__file__), "..", "assets")
 
 # Generates a custom tile with run-time generated text and custom image via the
 # PIL module.
-def render_key_image(deck, icon_filename, font_filename, label_text):
+def render_key_image(deck, icon_filename, font_filename, label_text, overlay_filename=None):
     # Resize the source image asset to best-fit the dimensions of a single key,
     # leaving a margin at the bottom so that we can draw the key title
     # afterwards.
     icon = Image.open(icon_filename)
+    # If an overlay image is provided, load it, scale it to 1/3 the size of the icon, and place it in the top left corner of the icon
+    if overlay_filename is not None:
+        overlay = Image.open(overlay_filename)
+        overlay = overlay.resize((int(icon.width / 3), int(icon.height / 3)))
+        icon.paste(overlay, (0, 0))
     image = PILHelper.create_scaled_key_image(deck, icon, margins=[0, 0, 20, 0])
 
     # Load a custom TrueType font and use it to overlay the key index, draw key
@@ -57,12 +62,14 @@ def get_key_style(deck, key, state):
 
 # Creates a new key image based on the key index, style and current key state
 # and updates the image on the StreamDeck.
-def update_key_image(deck, key, icon, label, font="Roboto-Regular.ttf"):
+def update_key_image(deck, key, icon, label, font="Roboto-Regular.ttf", overlay=None):
     font = os.path.join(ASSETS_PATH, "fonts", font)
     icon = os.path.join(ASSETS_PATH, "images", icon)
+    if overlay is not None:
+        overlay = os.path.join(ASSETS_PATH, "images", overlay)
 
     # Generate the custom key with the requested image and label.
-    image = render_key_image(deck, icon, font, label)
+    image = render_key_image(deck, icon, font, label, overlay)
 
     # Use a scoped-with on the deck to ensure we're the only thread using it
     # right now.
@@ -121,14 +128,14 @@ def init_streamdeck(
             if action["index"] == key:
                 keyAction = action
                 break
-            
+
         for action in shortcut_actions:
             if action["index"] == key:
                 keyAction = action
                 break
             
         if keyAction is not None:
-            update_key_image(deck, key, keyAction["icon"], keyAction["label"])
+            update_key_image(deck, key, keyAction["icon"], keyAction["label"], overlay=keyAction.get("overlay", None))
 
     # Prints key state change information, updates rhe key image and performs any
     # associated actions when a key is pressed.
