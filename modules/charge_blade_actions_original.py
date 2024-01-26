@@ -13,6 +13,12 @@ def get_charge_blade_actions_original(charge_blade):
             "action": charge_blade.charge_shield,
         },
         {
+            "index": 3,
+            "icon": "charge_shield.png",
+            "label": "Charge Shield",
+            "action": charge_blade.charge_shield,
+        },
+        {
             "index": 4,
             "icon": "charge_phials.png",
             "label": "Bank It",

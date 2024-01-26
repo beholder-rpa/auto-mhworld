@@ -123,6 +123,50 @@ class ChargeBlade:
         if solo:
             self.sounds["stop"].play()
 
+    def charge_shield_sword(self, solo=False):
+        if solo:
+            self.sounds["start"].play()
+
+        # Y + Hold B (release)
+        self.mouse.press(Button.left)
+        sleep(0.25)
+        self.mouse.release(Button.left)
+        sleep(1.25)
+
+        self.mouse.press(Button.right)
+        sleep(0.5)
+        self.mouse.release(Button.right)
+        sleep(1)
+
+        # Charge Shield
+        # Y+B
+        self.mouse.press(Button.x1)
+        sleep(0.25)
+        self.mouse.release(Button.x1)
+        sleep(0.5)
+
+        # Y+B
+        self.mouse.press(Button.x1)
+        sleep(0.25)
+        self.mouse.release(Button.x1)
+        sleep(0.5)
+
+        # This cancels the SAED, charging the shield
+        self.mouse.press(Button.x2)
+        sleep(1)
+        # Then we charge the sword
+        self.mouse.press(Button.right)
+        sleep(0.25)
+        self.mouse.release(Button.right)
+        sleep(0.5)
+        self.mouse.press(Button.left)
+        sleep(2)  # The charge ls lengthy
+        self.mouse.release(Button.left)
+        self.mouse.release(Button.x2)
+
+        if solo:
+            self.sounds["stop"].play()
+
     def charge_blade_sword_combo(self, solo=False):
         if solo:
             self.sounds["start"].play()
@@ -170,42 +214,7 @@ class ChargeBlade:
         self.fill_phials_2()
         sleep(0.25)
 
-        # Y + Hold B (release)
-        self.mouse.press(Button.left)
-        sleep(0.25)
-        self.mouse.release(Button.left)
-        sleep(1.25)
-
-        self.mouse.press(Button.right)
-        sleep(0.5)
-        self.mouse.release(Button.right)
-        sleep(1)
-
-        # Charge Shield
-        # Y+B
-        self.mouse.press(Button.x1)
-        sleep(0.25)
-        self.mouse.release(Button.x1)
-        sleep(0.5)
-
-        # Y+B
-        self.mouse.press(Button.x1)
-        sleep(0.25)
-        self.mouse.release(Button.x1)
-        sleep(0.5)
-
-        # This cancels the SAED, charging the shield
-        self.mouse.press(Button.x2)
-        sleep(1)
-        # Then we charge the sword
-        self.mouse.press(Button.right)
-        sleep(0.25)
-        self.mouse.release(Button.right)
-        sleep(0.5)
-        self.mouse.press(Button.left)
-        sleep(2)  # The charge ls lengthy
-        self.mouse.release(Button.left)
-        self.mouse.release(Button.x2)
+        self.charge_shield_sword()
 
         if solo:
             self.sounds["stop"].play()
