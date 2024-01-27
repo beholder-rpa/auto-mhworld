@@ -13,6 +13,7 @@ class ChargeBlade:
         if solo:
             self.sounds["start"].play()
         # R+B
+        self.sounds["RT_B"].play()
         self.mouse.press(Button.x2)
         self.mouse.press(Button.right)
         sleep(0.25)
@@ -26,18 +27,21 @@ class ChargeBlade:
             self.sounds["start"].play()
 
         # Y+B
+        self.sounds["YB"].play()
         self.mouse.press(Button.x1)
         sleep(0.25)
         self.mouse.release(Button.x1)
         sleep(0.5)  # Since we're lunging, we're slightly slower to the charge.
 
         # Hold B
+        self.sounds["Hold_B"].play()
         self.mouse.press(Button.right)
         sleep(1)
         self.mouse.release(Button.right)
         sleep(0.25)
 
         # Y
+        self.sounds["Y"].play()
         self.mouse.press(Button.left)
         sleep(0.25)
         self.mouse.release(Button.left)
@@ -55,18 +59,21 @@ class ChargeBlade:
         # Y + Hold B (release) + Y + (Hold RT + B)
 
         # Y + Hold B (release)
+        self.sounds["Y"].play()
         self.mouse.press(Button.left)
         sleep(0.25)
         self.mouse.release(Button.left)
         sleep(0.25)
 
         # Hold B
+        self.sounds["Hold_B"].play()
         self.mouse.press(Button.right)
         sleep(1)
         self.mouse.release(Button.right)
         sleep(0.25)
 
         # Y
+        self.sounds["Y"].play()
         self.mouse.press(Button.left)
         sleep(0.25)
         self.mouse.release(Button.left)
@@ -81,24 +88,28 @@ class ChargeBlade:
     def charge_shield(self, solo=False):
         if solo:
             self.sounds["start"].play()
+            self.sounds["YB"].play()
             self.mouse.press(Button.x1)
             sleep(0.25)
             self.mouse.release(Button.x1)
             sleep(1)
 
         # Y+B
+        self.sounds["YB"].play()
         self.mouse.press(Button.x1)
         sleep(0.25)
         self.mouse.release(Button.x1)
         sleep(1)
 
         # Y+B
+        self.sounds["B"].play()
         self.mouse.press(Button.x1)
         sleep(0.25)
         self.mouse.release(Button.x1)
         sleep(0.5)
 
         # R2
+        self.sounds["RT"].play()
         self.mouse.press(Button.x2)
         sleep(0.25)
         self.mouse.release(Button.x2)
@@ -109,6 +120,7 @@ class ChargeBlade:
         if solo:
             self.sounds["start"].play()
         # R+B
+        self.sounds["RT_B"].play()
         self.mouse.press(Button.x2)
         self.mouse.press(Button.right)
         sleep(0.25)
@@ -117,6 +129,7 @@ class ChargeBlade:
         sleep(0.5)
 
         # Hold Y
+        self.sounds["Hold_Y"].play()
         self.mouse.press(Button.left)
         sleep(2)
         self.mouse.release(Button.left)
@@ -128,11 +141,13 @@ class ChargeBlade:
             self.sounds["start"].play()
 
         # Y + Hold B (release)
+        self.sounds["Y"].play()
         self.mouse.press(Button.left)
         sleep(0.25)
         self.mouse.release(Button.left)
         sleep(1.25)
 
+        self.sounds["Hold_B"].play()
         self.mouse.press(Button.right)
         sleep(0.5)
         self.mouse.release(Button.right)
@@ -140,25 +155,30 @@ class ChargeBlade:
 
         # Charge Shield
         # Y+B
+        self.sounds["YB"].play()
         self.mouse.press(Button.x1)
         sleep(0.25)
         self.mouse.release(Button.x1)
         sleep(0.5)
 
         # Y+B
+        self.sounds["YB"].play()
         self.mouse.press(Button.x1)
         sleep(0.25)
         self.mouse.release(Button.x1)
         sleep(0.5)
 
         # This cancels the SAED, charging the shield
+        self.sounds["Hold_RT"].play()
         self.mouse.press(Button.x2)
         sleep(1)
         # Then we charge the sword
+        self.sounds["B"].play()
         self.mouse.press(Button.right)
         sleep(0.25)
         self.mouse.release(Button.right)
         sleep(0.5)
+        self.sounds["Y"].play()
         self.mouse.press(Button.left)
         sleep(2)  # The charge ls lengthy
         self.mouse.release(Button.left)
@@ -178,24 +198,29 @@ class ChargeBlade:
 
         # Charge Shield
         # Y+B
+        self.sounds["YB"].play()
         self.mouse.press(Button.x1)
         sleep(0.25)
         self.mouse.release(Button.x1)
         sleep(1)  # If we don't wait long enough, it does an elemental discharge
 
         # Y+B
+        self.sounds["YB"].play()
         self.mouse.press(Button.x1)
         sleep(0.25)
         self.mouse.release(Button.x1)
         sleep(0.5)  # If we don't wait long enough, it completes the SAED
 
         # This cancels the SAED, charging the shield
+        self.sounds["Hold_RT"].play()
         self.mouse.press(Button.x2)
         sleep(1.25)  # If we don't wait long enough, we go into a morph slash
         # Then we charge the sword
+        self.sounds["B"].play()
         self.mouse.press(Button.right)
         sleep(0.25)
         self.mouse.release(Button.right)
+        self.sounds["Y"].play()
         self.mouse.press(Button.left)
         sleep(
             2.5
@@ -225,6 +250,7 @@ class ChargeBlade:
 
         # Morph to Axe
         # R+Y
+        self.sounds["RT_Y"].play()
         self.mouse.press(Button.x2)
         self.mouse.press(Button.left)
         sleep(0.25)
@@ -233,11 +259,11 @@ class ChargeBlade:
         sleep(1.5)
 
         # Y+B
-        self.mouse.press(Button.left)
-        self.mouse.press(Button.right)
+        self.sounds["YB"].play()
+        self.mouse.press(Button.X1)
         sleep(0.25)
         self.mouse.release(Button.left)
-        self.mouse.release(Button.right)
+
         if solo:
             self.sounds["stop"].play()
 
@@ -247,6 +273,7 @@ class ChargeBlade:
 
         # Morph to Axe
         # R+Y
+        self.sounds["RT_Y"].play()
         self.mouse.press(Button.x2)
         self.mouse.press(Button.left)
         sleep(0.25)
@@ -255,12 +282,14 @@ class ChargeBlade:
         sleep(2)
 
         # B
+        self.sounds["B"].play()
         self.mouse.press(Button.right)
         sleep(0.25)
         self.mouse.release(Button.right)
         sleep(1)
 
         # B
+        self.sounds["B"].play()
         self.mouse.press(Button.right)
         sleep(0.25)
         self.mouse.release(Button.right)
@@ -272,6 +301,7 @@ class ChargeBlade:
             self.sounds["start"].play()
         # Morph to Axe
         # R+Y
+        self.sounds["RT_Y"].play()
         self.mouse.press(Button.x2)
         self.mouse.press(Button.left)
         sleep(0.25)
@@ -280,18 +310,21 @@ class ChargeBlade:
         sleep(2)
 
         # Y+B
+        self.sounds["YB"].play()
         self.mouse.press(Button.x1)
         sleep(0.25)
         self.mouse.release(Button.x1)
         sleep(1)
 
         # C
+        self.sounds["LT"].play()
         self.keyboard.press("c")
         sleep(0.25)
         self.keyboard.release("c")
         sleep(3.0)
 
         # Controversial, morph back to sword
+        self.sounds["RT"].play()
         self.mouse.press(Button.x2)
         sleep(0.25)
         self.mouse.release(Button.x2)
@@ -304,6 +337,7 @@ class ChargeBlade:
             self.sounds["start"].play()
         # Morph to Axe
         # R+Y
+        self.sounds["RT_Y"].play()
         self.mouse.press(Button.x2)
         self.mouse.press(Button.left)
         sleep(0.25)
@@ -312,23 +346,24 @@ class ChargeBlade:
         sleep(2)
 
         # Y+B
+        self.sounds["YB"].play()
         self.mouse.press(Button.x1)
         sleep(0.25)
         self.mouse.release(Button.x1)
         sleep(1)
 
         # C
+        self.sounds["LT"].play()
         self.keyboard.press("c")
         sleep(0.25)
         self.keyboard.release("c")
         sleep(3.25)
 
         # now we do the finisher
-        self.mouse.press(Button.left)
-        self.mouse.press(Button.right)
+        self.sounds["YB"].play()
+        self.mouse.press(Button.x1)
         sleep(0.25)
-        self.mouse.release(Button.left)
-        self.mouse.release(Button.right)
+        self.mouse.release(Button.x1)
 
         if solo:
             self.sounds["stop"].play()
