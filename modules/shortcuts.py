@@ -15,7 +15,7 @@ class Shortcuts:
 
     def generic_shortcut(self, functionKey, numberKey, solo):
         if solo:
-            self.sounds["alert"].play()
+            self.sounds["select"].play()
 
         self.keyboard.press(functionKey)
         sleep(0.25)
